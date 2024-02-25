@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { evenOrOdd } from '@/playground'
+import { evenOrOdd, multiply } from '@/playground'
 
 describe('basic math', () => {
   it('Adds two numbers', () => {
@@ -17,6 +17,12 @@ describe('basic math', () => {
       it("returns result 'odd'", () => {
         expect(evenOrOdd(3)).toBe('odd')
       })
+    })
+  })
+
+  describe('Multiplication', () => {
+    it('multiplies two numbers passed', () => {
+      expect(multiply(2, 6)).toBe(12)
     })
   })
 })
