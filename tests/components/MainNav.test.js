@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/vue'
 
 import MainNav from '@/components/MainNav.vue'
-import { describe } from 'vitest'
+import { describe, expect } from 'vitest'
 
 describe('MainNav', () => {
   it('Displays company name', () => {
     render(MainNav)
-    screen.debug()
+    const companyName = screen.getByText('Zef Career Finder')
+    expect(companyName).toBeInTheDocument()
   })
 })
