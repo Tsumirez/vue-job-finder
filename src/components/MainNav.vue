@@ -5,20 +5,9 @@
         <a :href="url" class="flex h-full items-center text-xl">{{ company }}</a>
         <nav class="ml-12 h-full">
           <ul class="flex h-full w-full list-none">
-            <li class="h-full"><a href=" " class="flex h-full items-center py-5">Teams</a></li>
-            <li class="ml-9 h-full">
-              <a href="" class="flex h-full items-center py-5">Location</a>
+            <li class="ml-9 h-full first:ml-0" v-for="menuItem in menuItems" :key="menuItem">
+              <a href="" class="flex h-full items-center py-5">{{ menuItem }}</a>
             </li>
-            <li class="ml-9 h-full">
-              <a href="" class="flex h-full items-center py-5">Life with us</a>
-            </li>
-            <li class="ml-9 h-full">
-              <a href="" class="flex h-full items-center py-5">How we Hire</a>
-            </li>
-            <li class="ml-9 h-full">
-              <a href="" class="flex h-full items-center py-5">Students</a>
-            </li>
-            <li class="ml-9 h-full"><a href="" class="flex h-full items-center py-5">Jobs</a></li>
           </ul>
         </nav>
       </div>
@@ -32,7 +21,8 @@ export default {
   data() {
     return {
       company: 'Zef Career Finder',
-      url: 'https://careers.google.com'
+      url: 'https://careers.google.com',
+      menuItems: ['Teams', 'Location', 'Life with us', 'How we hire', 'Students', 'Jobs']
     }
   }
 }
