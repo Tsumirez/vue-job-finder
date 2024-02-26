@@ -9,4 +9,19 @@ describe('MainNav', () => {
     const companyName = screen.getByText('Zef Career Finder')
     expect(companyName).toBeInTheDocument()
   })
+
+  it('Lists main nav links', () => {
+    render(MainNav)
+    const mainNavListItems = screen.getAllByRole('listitem')
+    const mainNavTexts = mainNavListItems.map((item) => item.textContent)
+
+    expect(mainNavTexts).toEqual([
+      'Teams',
+      'Location',
+      'Life with us',
+      'How we hire',
+      'Students',
+      'Jobs'
+    ])
+  })
 })
