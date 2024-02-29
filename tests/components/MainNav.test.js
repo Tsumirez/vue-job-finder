@@ -24,4 +24,16 @@ describe('MainNav', () => {
       'Jobs'
     ])
   })
+
+  describe('When user logs in', () => {
+    it("Displays user's picture", () => {
+      render(MainNav)
+
+      const profileImage = screen.queryByRole('img', {
+        name: /profile-icon/i
+      })
+
+      expect(profileImage).not.toBeInTheDocument()
+    })
+  })
 })
