@@ -1,6 +1,6 @@
 <template>
   <button
-    class="hover:shadow-blue rounded border-0 bg-brand-blue-1 px-5 py-3 font-medium text-white"
+    class="rounded border-0 bg-brand-blue-1 px-5 py-3 font-medium text-white hover:shadow-blue"
   >
     Sign In
   </button>
@@ -8,6 +8,11 @@
 
 <script>
 export default {
-  name: 'ActionButton'
+  name: 'ActionButton',
+  methods: {
+    handleClick() {
+      console.log('Login button was clicked')
+    }
+  }
 }
 </script>
