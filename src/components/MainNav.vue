@@ -11,7 +11,8 @@
           </ul>
         </nav>
         <div class="ml-auto flex items-center">
-          <action-button />
+          <profile-icon v-if="isLoggedIn" />
+          <action-button v-else />
         </div>
       </div>
     </div>
@@ -20,15 +21,17 @@
 
 <script>
 import ActionButton from '@/components/ActionButton.vue'
+import ProfileIcon from './ProfileIcon.vue'
 
 export default {
   name: 'MainNav',
-  components: { ActionButton },
+  components: { ActionButton, ProfileIcon },
   data() {
     return {
       company: 'Zef Career Finder',
       url: 'https://careers.google.com',
-      menuItems: ['Teams', 'Location', 'Life with us', 'How we hire', 'Students', 'Jobs']
+      menuItems: ['Teams', 'Location', 'Life with us', 'How we hire', 'Students', 'Jobs'],
+      isLoggedIn: false
     }
   }
 }
