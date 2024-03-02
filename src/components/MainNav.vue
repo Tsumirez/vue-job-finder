@@ -15,6 +15,7 @@
           <action-button text="Sign In" type="primary" @click="loginUser" v-else />
         </div>
       </div>
+      <sub-nav />
     </div>
   </header>
 </template>
@@ -22,10 +23,11 @@
 <script>
 import ActionButton from '@/components/ActionButton.vue'
 import ProfileIcon from './ProfileIcon.vue'
+import SubNav from '@/components/SubNav.vue'
 
 export default {
   name: 'MainNav',
-  components: { ActionButton, ProfileIcon },
+  components: { ActionButton, ProfileIcon, SubNav },
   data() {
     return {
       company: 'Zef Career Finder',
