@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/vue'
 
 import MainNav from '@/components/MainNav.vue'
 import { describe, expect } from 'vitest'
+import userEvent from '@testing-library/user-event'
 
 describe('MainNav', () => {
   it('Displays company name', () => {
@@ -26,14 +27,26 @@ describe('MainNav', () => {
   })
 
   describe('When user logs in', () => {
-    it("Displays user's picture", () => {
+    it("Displays user's picture", async () => {
       render(MainNav)
 
-      const profileImage = screen.queryByRole('img', {
+      let profileImage = screen.queryByRole('img', {
         name: /profile-icon/i
       })
 
       expect(profileImage).not.toBeInTheDocument()
+
+      const loginButton = screen.getByRole('button', {
+        name: /sign in/i
+      })
+
+      await userEvent.click(loginButton)
+
+      profileImage = screen.getByRole('img', {
+        name: /profile icon/i
+      })
+
+      expect(profileImage).toBeInTheDocument()
     })
   })
 })
