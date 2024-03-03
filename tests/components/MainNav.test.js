@@ -5,7 +5,7 @@ import { describe, expect } from 'vitest'
 import userEvent from '@testing-library/user-event'
 
 describe('MainNav', () => {
-  it('Displays company name', () => {
+  const renderMainNav = () => {
     render(MainNav, {
       global: {
         stubs: {
@@ -13,18 +13,17 @@ describe('MainNav', () => {
         }
       }
     })
+  }
+
+  it('Displays company name', () => {
+    renderMainNav()
     const companyName = screen.getByText('Zef Career Finder')
     expect(companyName).toBeInTheDocument()
   })
 
   it('Lists main nav links', () => {
-    render(MainNav, {
-      global: {
-        stubs: {
-          FontAwesomeIcon: true
-        }
-      }
-    })
+    renderMainNav()
+
     const mainNavListItems = screen.getAllByRole('listitem')
     const mainNavTexts = mainNavListItems.map((item) => item.textContent)
 
@@ -40,13 +39,7 @@ describe('MainNav', () => {
 
   describe('When user logs in', () => {
     it("Displays user's picture", async () => {
-      render(MainNav, {
-        global: {
-          stubs: {
-            FontAwesomeIcon: true
-          }
-        }
-      })
+      renderMainNav()
 
       let profileImage = screen.queryByRole('img', {
         name: /profile-icon/i
