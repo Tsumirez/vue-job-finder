@@ -6,13 +6,25 @@ import userEvent from '@testing-library/user-event'
 
 describe('MainNav', () => {
   it('Displays company name', () => {
-    render(MainNav)
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
     const companyName = screen.getByText('Zef Career Finder')
     expect(companyName).toBeInTheDocument()
   })
 
   it('Lists main nav links', () => {
-    render(MainNav)
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
     const mainNavListItems = screen.getAllByRole('listitem')
     const mainNavTexts = mainNavListItems.map((item) => item.textContent)
 
@@ -28,7 +40,13 @@ describe('MainNav', () => {
 
   describe('When user logs in', () => {
     it("Displays user's picture", async () => {
-      render(MainNav)
+      render(MainNav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true
+          }
+        }
+      })
 
       let profileImage = screen.queryByRole('img', {
         name: /profile-icon/i
