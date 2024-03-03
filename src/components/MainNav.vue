@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full text-sm">
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed left-0 top-0 h-16 w-full bg-white">
       <div class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8">
         <a :href="url" class="flex h-full items-center text-xl">{{ company }}</a>
@@ -34,6 +34,12 @@ export default {
       url: 'https://careers.google.com',
       menuItems: ['Teams', 'Location', 'Life with us', 'How we hire', 'Students', 'Jobs'],
       isLoggedIn: false
+    }
+  },
+  computed: {
+    headerHeightClass() {
+      if (this.isLoggedIn) return 'h-32'
+      return 'h-16'
     }
   },
   methods: {
