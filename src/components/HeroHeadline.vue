@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>Get payed for your genius</h1>
+    <h1>{{ action }} and get payed for your genius</h1>
     <h2>Find your next job with us!</h2>
   </section>
 </template>
@@ -10,11 +10,25 @@ export default {
   name: 'HeroHeadline',
   data() {
     return {
-      test: 'Test data variable'
+      action: 'Design',
+      showStopper: null
     }
   },
+  beforeUnmount() {
+    clearInterval(this.showStopper)
+  },
   created() {
-    console.log('Hero Headline just got created. And it can access: ' + this.test)
+    this.changeActionVerb()
+  },
+  methods: {
+    changeActionVerb() {
+      const actions = ['Design', 'Build', 'Repair', 'Upgrade']
+
+      this.showStopper = setInterval(() => {
+        let currentActionIndex = actions.indexOf(this.action)
+        this.action = actions[(currentActionIndex + 1) % actions.length]
+      }, 3000)
+    }
   }
 }
 </script>
