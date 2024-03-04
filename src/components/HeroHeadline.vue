@@ -1,9 +1,9 @@
 <template>
   <section>
-    <h1>
-      <span :class="[action]">{{ action }}</span> and get payed for your genius
+    <h1 class="mb-14 text-8xl font-bold tracking-tighter">
+      <span :class="[action]">{{ action }}</span> <br />and get paid for your genius
     </h1>
-    <h2>Find your next job with us!</h2>
+    <h2 class="text-3xl font-light">Find your next job with us!</h2>
   </section>
 </template>
 
@@ -16,9 +16,7 @@ export default {
       showStopper: null
     }
   },
-  computed: {
-    actionClasses() {}
-  },
+
   beforeUnmount() {
     clearInterval(this.showStopper)
   },
