@@ -1,6 +1,8 @@
 <template>
   <section>
-    <h1>{{ action }} and get payed for your genius</h1>
+    <h1>
+      <span :class="[action]">{{ action }}</span> and get payed for your genius
+    </h1>
     <h2>Find your next job with us!</h2>
   </section>
 </template>
@@ -13,6 +15,9 @@ export default {
       action: 'Design',
       showStopper: null
     }
+  },
+  computed: {
+    actionClasses() {}
   },
   beforeUnmount() {
     clearInterval(this.showStopper)
@@ -32,3 +37,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.Build {
+  color: #a33320;
+}
+.Design {
+  color: #333333;
+}
+.Repair {
+  color: #3366cc;
+}
+.Upgrade {
+  color: #33cc66;
+}
+</style>
