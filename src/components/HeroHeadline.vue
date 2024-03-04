@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import nextElementInList from '@/utils/nextElementInList'
+
 export default {
   name: 'HeroHeadline',
   data() {
@@ -28,8 +30,7 @@ export default {
       const actions = ['Design', 'Build', 'Repair', 'Upgrade']
 
       this.showStopper = setInterval(() => {
-        let currentActionIndex = actions.indexOf(this.action)
-        this.action = actions[(currentActionIndex + 1) % actions.length]
+        this.action = nextElementInList(actions, this.action)
       }, 3000)
     }
   }
