@@ -40,4 +40,16 @@ describe('The HeroHeadline', () => {
     expect(actionPhrase).toBeInTheDocument()
     vi.useRealTimers()
   })
+
+  it('removes interval when component is destroyed', () => {
+    vi.useFakeTimers()
+    const clearInterval = vi.fn()
+    vi.stubGlobal('clearInterval', clearInterval)
+
+    const { unmount } = render(HeroHeadline)
+    unmount()
+    expect(clearInterval).toHaveBeenCalled()
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+  })
 })
